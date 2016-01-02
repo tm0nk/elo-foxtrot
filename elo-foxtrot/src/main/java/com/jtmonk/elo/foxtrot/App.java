@@ -1,13 +1,16 @@
 package com.jtmonk.elo.foxtrot;
 
 /**
- * Hello world!
+ * Read all matches.
  *
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
+	public static void main(String[] args) throws Exception {
+		MatchReader matchReader = new MatchReader();
+		matchReader.readMatches("data/Badminton2015SuperRegionals - 2015-12-27.tsv");
+		matchReader.readMatches("data/Badminton2015SuperRegionals - 2015-12-28.tsv");
+		matchReader.readMatches("data/Badminton2015SuperRegionals - 2015-12-29.tsv");
+		PlayerFactory.getInstance().printCurrentStandings();
+	}
 }
