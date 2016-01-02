@@ -23,7 +23,6 @@ public class MatchReader {
 		while ((row = parser.parseNext()) != null) {
 			Match match = buildMatch(row);
 			if (match != null) {
-				System.out.println(Arrays.toString(row));
 				EloRating.updateRatings(match);
 			}
 		}
@@ -37,13 +36,13 @@ public class MatchReader {
 			System.err.println("Player A is null!");
 			return null;
 		}
-		Player playerA = PlayerFactory.getInstance().lookupPlayer(playerAName);
+		Player playerA = PlayerFactory.getInstance().lookupPlayer(playerAName, draw);
 		String playerBName = row[5];
 		if (playerBName == null) {
 			System.err.println("Player B is null!");
 			return null;
 		}
-		Player playerB = PlayerFactory.getInstance().lookupPlayer(playerBName);
+		Player playerB = PlayerFactory.getInstance().lookupPlayer(playerBName, draw);
 		String score = row[6];
 		String duration = row[9];
 		String court = row[10];

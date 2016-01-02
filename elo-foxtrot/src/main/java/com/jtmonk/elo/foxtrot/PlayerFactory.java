@@ -22,15 +22,21 @@ public class PlayerFactory {
 		return INSTANCE;
 	}
 	
-	public Player lookupPlayer(String name) {
+	public Player lookupPlayer(String name, String draw) {
 		String key = name.toLowerCase();
 
 		if (!playerCache.containsKey(key)) {
 			Player player = new Player(name);
+			player.setDraw(draw);
 			playerCache.putIfAbsent(key, player);
 		}
 		
-		return playerCache.get(key);
+		Player p = playerCache.get(key);
+		if (!p.getDraw().equals(draw)) {
+			System.err.println("Updating draw for " + p.toString() + " to " + draw);
+			p.setDraw(draw);
+		}
+		return p;
 	}
 	
 	public void printCurrentStandings() {
