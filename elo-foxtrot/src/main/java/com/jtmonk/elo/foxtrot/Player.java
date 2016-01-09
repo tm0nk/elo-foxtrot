@@ -39,7 +39,7 @@ public class Player implements Comparable<Player> {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("{");
-		builder.append("draw: " + draw);
+		builder.append("draw: '" + draw + "'");
 		builder.append(", ");
 		builder.append("rating: " + Math.round(rating));
 		builder.append(", ");
